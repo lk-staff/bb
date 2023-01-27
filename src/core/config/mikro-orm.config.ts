@@ -6,9 +6,14 @@ const logger = new Logger('MikroOrm');
 
 export default defineConfig({
   type: 'sqlite',
+  timezone: '+3',
   dbName: 'testDbSqlite',
   entities: ['dist/**/*.entity.js'],
   entitiesTs: ['src/**/*.entity.ts'],
+  migrations: {
+    path: 'dist/core/migrations',
+    pathTs: 'src/core/migrations',
+  },
   debug: true,
   logger: logger.log.bind(logger),
   metadataProvider: TsMorphMetadataProvider,
